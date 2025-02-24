@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.10)
+project(matrix)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Опция для выбора типа массива
+
+find_package(OpenMP REQUIRED)
+if(NOT OpenMP_CXX_FOUND)
+	message(SEND_ERROR "Failed to find OpenMP.")
+	return()
+else()
+	include_directories(${OpenMP_INCLUDE_DIRS})
+    message("OpenMP FOUND dir is ${OpenMP_INCLUDE_DIRS}.")
+endif()
+
+add_executable(matrix task1.cpp)
+
+# Установка флагов оптимизации
+target_compile_options(matrix PRIVATE -O3)
