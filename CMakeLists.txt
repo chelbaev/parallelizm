@@ -17,5 +17,7 @@ endif()
 
 add_executable(matrix task1.cpp)
 
+target_link_libraries(integral OpenMP::OpenMP_CXX)
+
 # Установка флагов оптимизации
 target_compile_options(matrix PRIVATE -O3)
